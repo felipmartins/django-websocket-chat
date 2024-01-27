@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Chat WOW
+{% endblock %}
+
+{% block content %}
+<div class="h-1/2 w-5/6 lg:w-1/2 bg-[#ceb5a7] flex flex-col rounded-3xl items-center gap-y-4">
+
+    <h1 class="text-2xl lg:text-3xl font-bold mt-4 mb-8">Chat WOW</h1>
+
+    {% for chat in chats %}
+
+    <a class="text-[#5b7b7a] underline text-lg" href="{% url 'chat' chat.uuid %}"><p>{{chat}}</p></a>
+
+    {% endfor %}
+    <div class="mt-12 flex items-center justify-center w-full">
+        <form method="post" class="w-full flex flex-col items-center justify-center text-center">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Entrar" class="rounded-full bg-[#5b7b7a] text-white text-lg w-1/4 mt-4 p-1 text-center">
+        </form>
+    </div>
+</div>
+{% endblock %}
